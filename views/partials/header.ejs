@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Categorías</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <span class="marca">CRUD Categorías</span>
+    <% if (usuario) { %>
+      <div class="nav-der">
+        <span>Hola, <strong><%= usuario.nombre %></strong></span>
+        <form action="/logout" method="POST"><button class="btn btn-sec">Cerrar sesión</button></form>
+      </div>
+    <% } else { %>
+      <div class="nav-der">
+        <a href="/login">Iniciar sesión</a>
+        <a href="/registro">Registrarse</a>
+      </div>
+    <% } %>
+  </nav>
+  <main class="contenedor">
+    <% if (flash) { %>
+      <div class="alerta alerta-<%= flash.tipo %>"><%= flash.mensaje %></div>
+    <% } %>

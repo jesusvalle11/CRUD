@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<section class="tarjeta tarjeta-auth">
+  <h1><%= titulo %></h1>
+  <form action="<%= accion %>" method="POST">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" value="<%= categoria.nombre || '' %>" maxlength="50" required
+           class="<%= errores.nombre ? 'invalido' : '' %>">
+    <small class="error"><%= errores.nombre || '' %></small>
+
+    <label for="descripcion">Descripción</label>
+    <textarea id="descripcion" name="descripcion" maxlength="255" rows="3"
+              class="<%= errores.descripcion ? 'invalido' : '' %>"><%= categoria.descripcion || '' %></textarea>
+    <small class="error"><%= errores.descripcion || '' %></small>
+
+    <div class="acciones">
+      <button type="submit" class="btn">Guardar</button>
+      <a href="/categorias" class="btn btn-sec">Cancelar</a>
+    </div>
+  </form>
+</section>
+<%- include('../partials/footer') %>

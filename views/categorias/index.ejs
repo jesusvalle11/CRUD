@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+<section class="tarjeta">
+  <div class="encabezado">
+    <h1>Categorías</h1>
+    <a href="/categorias/nueva" class="btn">+ Nueva categoría</a>
+  </div>
+  <% if (categorias.length === 0) { %>
+    <p>No hay categorías registradas todavía.</p>
+  <% } else { %>
+    <table>
+      <thead><tr><th>ID</th><th>Nombre</th><th>Descripción</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <% categorias.forEach(c => { %>
+          <tr>
+            <td><%= c.id %></td>
+            <td><%= c.nombre %></td>
+            <td><%= c.descripcion %></td>
+            <td class="acciones">
+              <a href="/categorias/editar/<%= c.id %>" class="btn btn-sec">Editar</a>
+              <form action="/categorias/eliminar/<%= c.id %>" method="POST"
+                    onsubmit="return confirm('¿Eliminar la categoría <%= c.nombre.replace(/'/g, '') %>?')">
+                <button class="btn btn-peligro">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</section>
+<%- include('../partials/footer') %>
